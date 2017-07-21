@@ -1,12 +1,12 @@
 /*  MySQL */
-const mysql      = require('mysql');
+const mysql = require('mysql');
 const settings = require('electron-settings');
 
 var connection = mysql.createConnection({
-  host     : settings.get('mysql.host'),
-  user     : settings.get('mysql.user'),
-  password : settings.get('mysql.password'),
-  database : settings.get('mysql.database')
+  host     : this.getHost(),
+  user     : this.getUser(),
+  password : this.getPassword(),
+  database : this.getDatabase()
 });
 
 function getHost()

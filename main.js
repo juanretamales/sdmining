@@ -15,7 +15,7 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + '/app/img/icon.ico'})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -74,7 +74,7 @@ ipc.on('open-file-dialog', function (event) {
     if (files)
 	{
 		event.sender.send('selected-directory', files);
-	}	
+	}
   })
 })
 
@@ -89,15 +89,15 @@ ipc.on('save-file', function (event,arg) {
 			}
 			content=`${arg}`;
 			workspace=fileName;
-			// fileName is a string that contains the path and filename created in the save file dialog.  
+			// fileName is a string that contains the path and filename created in the save file dialog.
 			fs.writeFile(workspace, content, (err) => {
-				
+
 				if(err){
 					console.log("An error ocurred creating the file "+ err.message)
-				}		
+				}
 				console.log("The file has been succesfully saved");
 			});
-		}); 
+		});
 	}
 	else
 	{
@@ -105,7 +105,7 @@ ipc.on('save-file', function (event,arg) {
 		fs.writeFile(workspace, content, (err) => {
 				if(err){
 					console.log("An error ocurred creating the file "+ err.message)
-				}		
+				}
 				console.log("The file has been succesfully saved");
 		});
 	}
@@ -119,16 +119,16 @@ ipc.on('save-as-file', function (event,arg) {
 			return;
 		}
 
-		// fileName is a string that contains the path and filename created in the save file dialog. 
+		// fileName is a string that contains the path and filename created in the save file dialog.
 		// fs.writeFile(fileName, content, (err)
-		content=`${arg}`;		
+		content=`${arg}`;
 		fs.writeFile(workspace, content, (err) => {
 			if(err){
 				console.log("An error ocurred creating the file "+ err.message)
-			}		
+			}
 			console.log("The file has been succesfully saved");
 		});
-	}); 
+	});
 })
 
 ipc.on('git-version', function (event,arg) {
@@ -155,7 +155,7 @@ ipc.on('git-version', function (event,arg) {
 
 ipc.on('node-version', function (event,arg) {
 	var shell = require('shelljs');
-	
+
 	shell.config.path='C:\\Program Files\\nodejs\\node.exe' ;
 	/*dialog.showOpenDialog((fileName) => {
 			if (fileName === undefined){
@@ -165,14 +165,14 @@ ipc.on('node-version', function (event,arg) {
 			shell.config.execPath=fileName;
 			console.log(fileName);
 		}); */
-	
+
 	var version = shell.exec('node --version', {silent:true}).stdout;
- 
+
 	//var child = shell.exec('node --version', {async:true});
 	//	child.stdout.on('data', function(data) {
 	//  /* ... do something with data ... */
 	//});
-	 
+
 	shell.exec('node --version', function(code, stdout, stderr) {
 	  console.log('Exit code:', code);
 	  console.log('Program output:', stdout);
@@ -194,6 +194,11 @@ ipc.on('txtSave', function (event,arg) {
 	settings.set('name', {
 		first: arg,
 		last: 'ejemplo x consola'
-	}); 
+	});
 })
 
+ipc.on('txtTwitter', function (event,arg) {
+    var twitter = require('./plugin/twitter.js');
+    var temp=twitter.getUserTimeLine(arg);
+	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
+})

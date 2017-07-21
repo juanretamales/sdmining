@@ -3,10 +3,15 @@ const settings = require('electron-settings');
 var Twitter = require('twitter');
 
 var client = new Twitter({
+  consumer_key: 'nFhdFaiXeNzl4b9ytJgAUDsR0',
+  consumer_secret: 'omQJjccGUzXwTd5bA1ZgFh205JDwuC4ENX6Eogo32gygL5h9cs',
+  access_token_key: '883576864052269057-9704MbPp5RwSAzWeXxtev7eHUFfqQz1',
+  access_token_secret: 'vmSWffvm2rhicKBpdLs5GpGjHC6mUXsiFhX9ARSiTHu8M'
+/*
   consumer_key: this.getConsumerKey,
   consumer_secret: this.getConsumerSecret,
   access_token_key: this.access_token_key,
-  access_token_secret: this.access_token_secret
+  access_token_secret: this.access_token_secret*/
 });
 
 function getConsumerKey()
@@ -47,12 +52,16 @@ function setAccessTokenSecret(q)
     settings.set('twitter',{accessTokenSecret: q});
 }
 
-var params = {screen_name: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response) {
-  if (!error) {
-    console.log(tweets);
-  }
-});
+function getUserTimeLine(q)
+{
+    var params = {screen_name: q};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+      if (!error) {
+        console.log(tweets);
+        return tweets;
+      }
+    });
+}
 
 function Stream()
 {
@@ -76,3 +85,16 @@ function Stream()
       });
     });
 }
+/*Disponibles fuera del fichero*/
+exports.getConsumerKey = function(){ return getConsumerKey() };
+exports.setConsumerKey =  function(q){setConsumerKey(q)};
+exports.getConsumerSecret= function(){return getConsumerSecret()};
+exports.setConsumerSecret= function(q){setConsumerSecret(q)};
+exports.getConsumerSecret= function(){return getConsumerSecret()};
+exports.setConsumerSecret= function(q){setConsumerSecret(q)};
+exports.getAccessTokenKey= function(){return getAccessTokenKey()};
+exports.setAccessTokenKey= function(q){setAccessTokenKey(q)};
+exports.getAccessTokenSecret= function(){return getAccessTokenSecret()};
+exports.setAccessTokenSecret= function(q){setAccessTokenSecret(q)};
+
+exports.getUserTimeLine= function(q){return getUserTimeLine(q)};

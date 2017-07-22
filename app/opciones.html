@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{title}}-Test</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="./js/Chart.bundle.min.js"></script>
+<style>
+  body > #standalone-container {
+    margin: 50px auto;
+    width: 720px;
+  }
+  #editor-container {
+    height: 350px;
+  }
+</style>
+  </head>
+  <body onload="cargarDatos()">
+  <h1>Opciones</h1><a href="index.html">Volver</a>
+  <div>
+      <h1>Twitter</h1>
+      <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)">
+      <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)">
+      <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)">
+      <label>Consumer Secret</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)">
+
+
+  </div>
+  <button id="btnGuardarOpciones">Guardar</button>
+</body>
+
+  <script>
+
+    require('./renderer.js'); // You can also require other files to run in this process
+
+
+	//require('./js/quill.min.js'); //Load the visual editor Quill
+
+
+
+	const ipc = require('electron').ipcRenderer;
+
+const selectDirBtn = document.getElementById('select-directory');
+
+
+
+//document.getElementById('btnTwitter').addEventListener('click', function (event) {
+// ipc.send('txtTwitter',document.getElementById('txtTwitter').value);
+//})
+//reviso si la opcion fue guardada, esto es para que no prepare enviar tooooodos los datos
+//y solo envie los que en verdad realizo cambios.
+var opciones=[];
+function guardarOpciones(q)
+{
+    if(opciones.length>0)
+    {
+        if(opciones.indexOf(q)==-1)
+        {
+            opciones.push(q)
+        }
+    }
+    else {
+        opciones.push(q)
+    }
+}
+document.getElementById('btnGuardarOpciones').addEventListener('click', function (event) {
+    if(opciones.length>0)
+    {
+        var temp={};
+        var i;
+        for(i=0;i<opciones.length;i++)
+        {
+
+            temp[opciones[i].toString()] = document.getElementById(opciones[i]).value;
+        }
+        console.log(temp);
+        console.log(JSON.stringify(temp));
+        ipc.send('guardarOpciones',temp);
+    }
+    else {
+        alert('No se realizaron cambios.');
+    }
+})
+function cargarDatos()
+{
+    console.log('cargar]Datos()');
+    //console.log(ipc.send('recibirOpciones',''));
+    console.log(ipc.sendSync('recibirOpciones', '')) // prints "pong"
+
+    /*ipc.on('recibirOpciones', (event, arg) => {
+      console.log(arg) // prints "pong"
+  })*/
+    /*// Listen for main messag
+    ipc.on('ping', (event, arg) => {
+    console.log(arg);
+    // Invoke method directly on main process
+    //main.pong(6);
+});)*/
+    /*Nota: quitar capa y hacerlo por main process*/
+    /*const settings = require('electron-settings');
+    document.getElementById('txtAccessTokenKey').value=settings.get('twitter.accessTokenKey');
+    document.getElementById('txtAccessTokenSecret').value=settings.get('twitter.accessTokenSecret');
+    document.getElementById('txtConsumerKey').value=settings.get('twitter.consumerKey');
+    document.getElementById('txtConsumerSecret').value=settings.get('twitter.consumerSecret');*/
+}
+</script>
+</html>

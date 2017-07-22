@@ -202,3 +202,40 @@ ipc.on('txtTwitter', function (event,arg) {
     var temp=twitter.getUserTimeLine(arg);
 	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
 })
+
+ipc.on('recibirOpciones', function (event,arg) {
+    console.log('recibirOpciones');
+    var twitter = require('./plugin/twitter.js');
+    var temp={};
+    temp['txtConsumerKey']=twitter.getConsumerKey();
+    temp['txtConsumerSecret']=twitter.getConsumerSecret();
+    temp['txtAccessTokenKey']=twitter.getAccessTokenKey();
+    temp['txtAccessTokenSecret']=twitter.getAccessTokenSecret();
+    console.log('temp['+temp+']');
+    event.returnValue = temp;
+    //event.sender.send('enviarRespuesta', temp);
+	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
+})
+
+ipc.on('guardarOpciones', function (event,arg) {
+    var twitter = require('./plugin/twitter.js');
+    if(arg.txtConsumerKey!=undefined)
+    {
+        twitter.setConsumerKey(arg['txtConsumerKey']);
+        console.log('txtConsumerKey:'+twitter.getConsumerKey());
+    }
+    if(arg.txtConsumerSecret!=undefined)
+    {
+        twitter.setConsumerSecret(arg['txtConsumerSecret']);
+        console.log('txtConsumerSecret:'+twitter.getConsumerSecret());
+    }if(arg.txtAccessTokenKey!=undefined)
+    {
+        twitter.setAccessTokenKey(arg['txtAccessTokenKey']);
+        console.log('txtAccessTokenKey:'+twitter.getAccessTokenKey());
+    }if(arg.txtAccessTokenSecret!=undefined)
+    {
+        twitter.setAccessTokenSecret(arg['txtAccessTokenSecret']);
+        console.log('txtAccessTokenSecret:'+twitter.getAccessTokenSecret());
+    };
+	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
+})

@@ -3,15 +3,10 @@ const settings = require('electron-settings');
 var Twitter = require('twitter');
 
 var client = new Twitter({
-  consumer_key: 'nFhdFaiXeNzl4b9ytJgAUDsR0',
-  consumer_secret: 'omQJjccGUzXwTd5bA1ZgFh205JDwuC4ENX6Eogo32gygL5h9cs',
-  access_token_key: '883576864052269057-9704MbPp5RwSAzWeXxtev7eHUFfqQz1',
-  access_token_secret: 'vmSWffvm2rhicKBpdLs5GpGjHC6mUXsiFhX9ARSiTHu8M'/*
-
-  consumer_key: this.getConsumerKey,
-  consumer_secret: this.getConsumerSecret,
-  access_token_key: this.access_token_key,
-  access_token_secret: this.access_token_secret*/
+  consumer_key: getConsumerKey(),
+  consumer_secret: getConsumerSecret(),
+  access_token_key: getAccessTokenKey(),
+  access_token_secret: getAccessTokenSecret()
 });
 
 
@@ -169,3 +164,6 @@ exports.setAccessTokenSecret= function(q){setAccessTokenSecret(q)};
 
 exports.getUserTimeLine= function(q){return getUserTimeLine(q)};
 exports.getHashTag= function(q){return getHashTag(q)};
+
+/*Experimentals*/
+//exports.getParameters= function(){return JSON.stringify(parameters) };

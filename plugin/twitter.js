@@ -3,16 +3,17 @@ const settings = require('electron-settings');
 var Twitter = require('twitter');
 
 var client = new Twitter({
-  /*consumer_key: 'nFhdFaiXeNzl4b9ytJgAUDsR0',
+  consumer_key: 'nFhdFaiXeNzl4b9ytJgAUDsR0',
   consumer_secret: 'omQJjccGUzXwTd5bA1ZgFh205JDwuC4ENX6Eogo32gygL5h9cs',
   access_token_key: '883576864052269057-9704MbPp5RwSAzWeXxtev7eHUFfqQz1',
-  access_token_secret: 'vmSWffvm2rhicKBpdLs5GpGjHC6mUXsiFhX9ARSiTHu8M'*/
+  access_token_secret: 'vmSWffvm2rhicKBpdLs5GpGjHC6mUXsiFhX9ARSiTHu8M'/*
 
   consumer_key: this.getConsumerKey,
   consumer_secret: this.getConsumerSecret,
   access_token_key: this.access_token_key,
-  access_token_secret: this.access_token_secret
+  access_token_secret: this.access_token_secret*/
 });
+
 
 function getConsumerKey()
 {
@@ -78,15 +79,53 @@ function setAccessTokenSecret(q)
 {
     settings.set('twitterAccessTokenSecret',q);
 }
-
+/*Obtiene algun dato por parametro, es para uso general*/
+function getData(resource, params)
+{
+    //params en formato -> var params = {screen_name: q};
+    client.get(resource, params, function(error, tweets, response) {
+      if (!error) {
+        //console.log(tweets);
+        return tweets;
+      }
+    });
+}
+//https://dev.twitter.com/rest/reference/get/statuses/user_timeline
 function getUserTimeLine(q)
 {
+    console.log('{screen_name: '+q+'}');
     var params = {screen_name: q};
     client.get('statuses/user_timeline', params, function(error, tweets, response) {
       if (!error) {
         console.log(tweets);
         return tweets;
       }
+      else {
+          console.log(error);
+          //console.log(tweets);
+          //console.log(response);
+      }
+    });
+}
+
+
+
+function getHashTag(params)
+{
+    var resource='search/tweets'
+    var params = {q: params};
+    //return getData(this.resource, this.params);
+    client.get('search/tweets', {q: 'node.js'}, function(error, tweets, response) {
+       console.log(tweets);
+    });
+}
+
+function getFavoriteList()
+{
+    client.get('favorites/list', function(error, tweets, response) {
+      if(error) throw error;
+      console.log(tweets);  // The favorites.
+      console.log(response);  // Raw response object.
     });
 }
 
@@ -129,3 +168,4 @@ exports.getAccessTokenSecret= function(){return getAccessTokenSecret()};/*Funcio
 exports.setAccessTokenSecret= function(q){setAccessTokenSecret(q)};
 
 exports.getUserTimeLine= function(q){return getUserTimeLine(q)};
+exports.getHashTag= function(q){return getHashTag(q)};

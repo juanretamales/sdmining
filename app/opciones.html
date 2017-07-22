@@ -86,23 +86,12 @@ function cargarDatos()
 {
     console.log('cargar]Datos()');
     //console.log(ipc.send('recibirOpciones',''));
-    console.log(ipc.sendSync('recibirOpciones', '')) // prints "pong"
+    var recibirOpciones=ipc.sendSync('recibirOpciones', '');
 
-    /*ipc.on('recibirOpciones', (event, arg) => {
-      console.log(arg) // prints "pong"
-  })*/
-    /*// Listen for main messag
-    ipc.on('ping', (event, arg) => {
-    console.log(arg);
-    // Invoke method directly on main process
-    //main.pong(6);
-});)*/
-    /*Nota: quitar capa y hacerlo por main process*/
-    /*const settings = require('electron-settings');
-    document.getElementById('txtAccessTokenKey').value=settings.get('twitter.accessTokenKey');
-    document.getElementById('txtAccessTokenSecret').value=settings.get('twitter.accessTokenSecret');
-    document.getElementById('txtConsumerKey').value=settings.get('twitter.consumerKey');
-    document.getElementById('txtConsumerSecret').value=settings.get('twitter.consumerSecret');*/
+    document.getElementById('txtAccessTokenKey').value=recibirOpciones['txtAccessTokenKey'];
+    document.getElementById('txtAccessTokenSecret').value=recibirOpciones['txtAccessTokenSecret'];
+    document.getElementById('txtConsumerKey').value=recibirOpciones['txtConsumerKey'];
+    document.getElementById('txtConsumerSecret').value=recibirOpciones['txtConsumerSecret'];
 }
 </script>
 </html>

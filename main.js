@@ -199,7 +199,12 @@ ipc.on('txtSave', function (event,arg) {
 
 ipc.on('txtTwitter', function (event,arg) {
     var twitter = require('./plugin/twitter.js');
+
+    console.log('txtTwitter:['+arg+']');
     var temp=twitter.getUserTimeLine(arg);
+    //var temp=twitter.getHashTag(arg);
+    console.log('txtTwitter:['+temp+']');
+    event.returnValue = temp;
 	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
 })
 

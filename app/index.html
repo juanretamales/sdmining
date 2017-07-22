@@ -45,6 +45,7 @@
 		 <input type="text" id="txtTwitter" value="JuanRetamalesL">
 		 <button class="demo-button" id="btnTwitter">consultar Twitter</button>
 	 </div>
+     <div id="respuesta">Vacio</div>
 </body>
 
   <script>
@@ -93,7 +94,12 @@ const settings = require('electron-settings');
 })
 
 document.getElementById('btnTwitter').addEventListener('click', function (event) {
- ipc.send('txtTwitter',document.getElementById('txtTwitter').value);
+    var respuesta=ipc.sendSync('txtTwitter', document.getElementById('txtTwitter').value);
+    console.log(respuesta);
+    document.getElementById('respuesta').innerHTML=respuesta;
+//ipc.send('txtTwitter',document.getElementById('txtTwitter').value);
 })
+
+
 </script>
 </html>

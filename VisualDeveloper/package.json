@@ -1,0 +1,28 @@
+{
+  "name": "JPEditor-Browser",
+  "version": "1.0.0",
+  "description": "descripcion",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanretamales/JPEditor-Browser.git"
+  },
+  "author": "http://www.juanretamales.cl/",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juanretamales/JPEditor-Browser.git/issues"
+  },
+  "homepage": "https://github.com/juanretamales/JPEditor-Browser.git#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}

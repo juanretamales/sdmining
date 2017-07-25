@@ -1,0 +1,51 @@
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+
+html, body
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	font-family: Uptown;
+	//background: #DFE3E6;
+	//background: url("img/triangular.png")  repeat scroll;
+	//background-size: 40px;
+}
+a
+{
+	text-decoration: none;
+	color: black;
+}
+body.admin-bar #branding-wrap{top: 28px;}
+body.admin-bar #wrapper{margin-top: 145px;}
+.block
+{
+	float: left;
+	width: 100%;
+	margin: 10px 0;
+	padding: 0px;
+}
+
+
+.icon-header em, .search-form > input:before
+{
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'icon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 20px;
+}
+
+@import 'header';
+@import 'page';
+@import 'post';
+@import 'sidebar';
+@import 'footer';

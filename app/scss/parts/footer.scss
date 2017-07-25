@@ -1,0 +1,35 @@
+/* Footer (Pie de pagina)
+================================================== */
+#pie
+{
+	font-family: sans-serif;
+	width: 100%;
+	background: #333;
+	border-top: 2px solid #000;
+	float: left;
+	text-align: center;
+	color: white;
+	position: absolute;
+	bottom: 0;
+}
+#pie a
+{
+	color: white;
+}
+
+@media (min-width:700px)
+{
+	#pie > p
+	{
+		float: left;
+		margin: 0px;
+		margin-left: 50px;
+		padding: 20px;
+	}
+	#pie > a
+	{
+		float: right;
+		margin-right: 50px;
+		padding: 20px;
+	}
+}

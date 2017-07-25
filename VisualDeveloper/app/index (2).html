@@ -1,0 +1,99 @@
+<html>
+	<head>
+		<title>Hola mundo Gulp</title>
+		<script src="headhesive.min.js"></script>
+		<script src="javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="inicio.css">
+	</head>
+	<body id="top" class=" body-logged">
+		<div id="menu-superior">
+			<nav id="menu-sup" class="menu-menu-container">
+				<ul id="nav">
+					<li id="menu-item-5" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5"><a href="http://localhost/JPTemplate/roles/">roles</a></li>
+					<li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-11"><a href="http://localhost/JPTemplate">Home</a></li>
+					<li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8"><a href="http://localhost/JPTemplate/roles/">roles</a>
+						<ul  class="sub-menu">
+							<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children menu-item-9"><a href="http://localhost/JPTemplate/2017/07/14/hello-world/">Hello world!</a>
+								<ul  class="sub-menu">
+									<li id="menu-item-10" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="http://localhost/JPTemplate/category/uncategorized/">Uncategorized</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li id="menu-item-12" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12"><a href="http://localhost/JPTemplate/sample-page/">Sample Page</a></li>
+				</ul>
+			</nav>
+			<div class="icon-header">
+				<a href="https://www.facebook.com/jua.retamales" class=""><em class="facebook"></em></a>
+				<a href="https://twitter.com/JuanRetamales" class=""><em class="twitter"></em></a>
+				<a href="mailto:jua.retamales@hotmail.cl" class=""><em class="email"></em></a>
+			</div>
+		</div>
+		<header id="header" class="banner  headers-logged">
+			<h1>
+				<a href="http://localhost/JPTemplate">
+					<label>
+						Juan Retamales Web
+					</label>
+				</a>
+			</h1>
+			<div class="icon-header">
+				<label for="search-toggle"><em class="search"></em></label>
+				<label for="menu-toggle"><em class="menu-icon"></em></label>
+			</div>
+			<nav id="menu-principal" class="menu-menu-container"><label for="menu-toggle">☰</label><input type="checkbox" id="menu-toggle"/>
+				<ul id="nav">
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-5"><a href="http://localhost/JPTemplate/roles/">roles</a></li>
+					<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-11"><a href="http://localhost/JPTemplate">Home</a></li>
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-8"><a href="http://localhost/JPTemplate/roles/">roles</a>
+						<ul  class="sub-menu">
+							<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children menu-item-9"><a href="http://localhost/JPTemplate/2017/07/14/hello-world/">Hello world!</a>
+								<ul  class="sub-menu">
+									<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10"><a href="http://localhost/JPTemplate/category/uncategorized/">Uncategorized</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12"><a href="http://localhost/JPTemplate/sample-page/">Sample Page</a></li>
+				</ul>
+			</nav>
+			<div id="search-form">
+				<input type="checkbox" id="search-toggle"/>
+				<form method="get" class="search-form" action="http://localhost/JPTemplate/">
+					<input type="text" placeholder="Buscar en el sitio" name="s" />
+				</form>
+			</div>
+		</header>
+		<a id="showHere"></a>
+<section class="container  container-logged" role="main">
+  <div id="slideshow">
+      </div>
+    <section class="content">
+
+       <article class="container__item">
+       <header>
+           <h4><a href="http://localhost/JPTemplate/2017/07/14/hello-world/"> Hello world! </a></h4>
+           <small>July 14, 2017</small>
+       </header>
+         <p><p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
+</p>                    <div class="post-category"><a href="http://localhost/JPTemplate/category/uncategorized/" rel="category tag">Uncategorized</a></div>
+        <a href="http://localhost/JPTemplate/2017/07/14/hello-world/" class="more">READ MORE</a>
+       <footer>
+		   <div class="icon-footer  flx-g flx-spc-between flx-u-1-5">
+				<a class="" href="https://www.facebook.com/share.php?u=<?php the_permalink(); ?>" class=""><em class="iconFacebook"></em></a>
+				<a class="" href="https://twitter.com/share?text=<?php echo urlencode( get_the_title( ) ); ?>" class=""><em class="iconTwitter "></em></a>
+				<a class="" href="javascript:void((function()%7Bvar%20e=document.createElement('script');e.setAttribute('type','text/javascript');e.setAttribute('charset','UTF-8');e.setAttribute('src','https://assets.pinterest.com/js/pinmarklet.js?r='+Math.random()*99999999);document.body.appendChild(e)%7D)());" class=""><em class="iconPinterest"></em></a>
+				<a class="" href="https://plus.google.com/share?url=<?php the_permalink(); ?>" class=""><em class="iconGoogle "></em></a>
+				<a class="" href="<?php the_permalink(); ?>#comments" class=""><em class="iconComentarios "></em></a>
+		   </div>
+       </footer>
+
+      </article>
+                    <!-- post navigation -->
+            </section>
+      </section>
+<footer id="pie">
+	<p>© 2017 Juan Retamales Web Todos los derechos reservados.</p>
+	<a href="http://www.juanretamales.cl">Diseñado por Juan Retamales.</a>
+</footer>
+</html>

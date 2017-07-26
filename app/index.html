@@ -1,105 +1,52 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>{{title}}-Test</title>
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0">
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script src="./js/Chart.bundle.min.js"></script>
-<style>
-  body > #standalone-container {
-    margin: 50px auto;
-    width: 720px;
-  }
-  #editor-container {
-    height: 350px;
-  }
-</style>
-  </head>
-	<a href="opciones.html">opciones</a>
-	<div class="test-controls">
-			<button class="demo-button" id="git-test">git-test</button>
-			<button class="demo-button" id="node-test">node-test</button>
-			<button class="demo-button" id="test1">test1</button>
-	</div>
-<body>
-    <h1>{{title}}</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+	<head>
+		<title>Hola mundo Gulp</title>
+		<script src="javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="inicio.css">
+	</head>
+	<body id="top" class=" body-logged">
+		<header id="header" class="banner  headers-logged">
+			<h1>
+				<a href="#">
+					<label>
+						Social Mining
+					</label>
+				</a>
+			</h1>
+			<div class="icon-header">
+				<label for="search-toggle"><em class="search"></em></label>
+				<label for="menu-toggle"><em class="menu-icon"></em></label>
+			</div>
+			<nav id="menu-principal" class="menu-menu-container"><label for="menu-toggle">☰</label><input type="checkbox" id="menu-toggle"/>
+				<ul id="nav">
+					<li class=""><a href="#">Inicio</a></li>
+					<li class=""><a href="#">Consultas</a></li>
+					<li class=""><a href="./opciones.html">Opciones</a></li>
+				</ul>
+			</nav>
+			<div id="search-form">
+				<input type="checkbox" id="search-toggle"/>
+				<form method="get" class="search-form" action="">
+					<input type="text" placeholder="Buscar en la aplicacion" name="s" />
+				</form>
+			</div>
+		</header>
+		<a id="showHere"></a>
+<section class="container  container-logged" role="main">
+    <section class="content">
+        <article class="container__item">
+        <header>
+           <h4><a href="#">Inicio</a></h4>
+        </header>
+        <p><p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
 
 
-	<div class="demo-controls">
-		<button class="demo-button" id="save">Guardar</button>
-		<button class="demo-button" id="save-as">Guardar como...</button>
-		<button class="demo-button" id="select-directory">Seleccionar directorio de trabajo</button>
-		<span class="demo-response" id="selected-file">You selected: C:\Users\AdamLastQuarter\Documents\workspace JPEditor</span>
-	 </div>
-
-	 <div>
-		 <input type="text" id="txtSave" value="ejemplo">
-		 <button class="demo-button" id="btnSave">guardar en memoria</button>
-	 </div>
-     <div>
-		 <input type="text" id="txtTwitter" value="JuanRetamalesL">
-		 <button class="demo-button" id="btnTwitter">consultar Twitter</button>
-	 </div>
-     <div id="respuesta">Vacio</div>
-</body>
-
-  <script>
-
-    require('./renderer.js'); // You can also require other files to run in this process
-
-
-	//require('./js/quill.min.js'); //Load the visual editor Quill
-
-
-
-	const ipc = require('electron').ipcRenderer;
-
-const selectDirBtn = document.getElementById('select-directory');
-
-document.getElementById('test1').addEventListener('click', function (event) {
-  ipc.send('test1',document.getElementById('editor-container').innerHTML);
-})
-document.getElementById('git-test').addEventListener('click', function (event) {
-  ipc.send('git-version',document.getElementById('editor-container').innerHTML);
-})
-document.getElementById('node-test').addEventListener('click', function (event) {
-  ipc.send('node-version',document.getElementById('editor-container').innerHTML);
-})
-
-document.getElementById('select-directory').addEventListener('click', function (event) {
-  ipc.send('open-file-dialog');
-})
-
-document.getElementById('save').addEventListener('click', function (event) {
-  ipc.send('save-file',document.getElementById('editor-container').innerHTML);
-})
-
-document.getElementById('save-as').addEventListener('click', function (event) {
-  ipc.send('save-as-file',document.getElementById('editor-container').innerHTML);
-})
-
-ipc.on('selected-directory', function (event, path) {
-  document.getElementById('selected-file').innerHTML = `Your selected: ${path}`;
-})
-
-const settings = require('electron-settings');
-
- document.getElementById('btnSave').addEventListener('click', function (event) {
-  ipc.send('txtSave',document.getElementById('txtSave').value);
-})
-
-document.getElementById('btnTwitter').addEventListener('click', function (event) {
-    var respuesta=ipc.sendSync('txtTwitter', document.getElementById('txtTwitter').value);
-    console.log(respuesta);
-    document.getElementById('respuesta').innerHTML=respuesta;
-//ipc.send('txtTwitter',document.getElementById('txtTwitter').value);
-})
-
-
-</script>
+      </article>
+                    <!-- post navigation -->
+            </section>
+      </section>
+<footer id="pie">
+	<p>© 2017 Todos los derechos reservados.</p>
+	<a href="http://www.juanretamales.cl">Diseñado por Juan Retamales.</a>
+</footer>
 </html>

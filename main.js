@@ -3,17 +3,43 @@ const electron = require('electron')
 const app = electron.app
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
+const settings = require('electron-settings');
 
 const path = require('path')
 const url = require('url')
 
+const loki = require('lokijs')
+var db = new loki('loki.json')
+var collection;
 
+if(settings.has('settings'))
+{
+    collection=settings.get('settings');
+}
+else {
+    collection = db.addCollection('settings')
+}
+global.sharedObj = {settings: collection};
+/*
+//For get this collection use
+//////// and test in: http://www.obeliskos.com/LokiSandbox/
+const loki = require('lokijs')
+var db = new loki('loki.json')
+var collection=global.sharedObj.settings;
+if(collection==null)
+{
+    collection = db.addCollection('settings')
+}
+*/
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
 function createWindow () {
+
+    //precharge settings of electron-settings
+
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600, icon: __dirname + '/app/img/icon.ico'})
 
@@ -243,5 +269,6 @@ ipc.on('guardarOpciones', function (event,arg) {
         twitter.setAccessTokenSecret(arg['txtAccessTokenSecret']);
         console.log('txtAccessTokenSecret:'+twitter.getAccessTokenSecret());
     };
+    settings.set('settings',global.sharedObj.settings);
 	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
 })

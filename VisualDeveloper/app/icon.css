@@ -1,0 +1,78 @@
+em[class*="icon-"], .icon-footer em:before, .icon-header em:before {
+  font-family: 'icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px; }
+
+.icon-footer a em {
+  /*! height: 100%; */ }
+
+.icon-footer .iconFacebook:before {
+  content: "\e90a"; }
+
+.icon-footer .iconFacebook {
+  background: #4e71a8; }
+
+.icon-footer .iconTwitter:before {
+  content: "\e917"; }
+
+.icon-footer .iconTwitter {
+  background: #1cb7eb; }
+
+.icon-footer .iconPinterest {
+  background: #bd081c; }
+
+.icon-footer .iconPinterest:before {
+  content: "\e903"; }
+
+.icon-footer .iconGoogle {
+  background: #e3411f; }
+
+.icon-footer .iconGoogle:before {
+  content: "\e909"; }
+
+.icon-footer .iconComentarios:before {
+  content: "\f0e5"; }
+
+.icon-footer .iconComentarios {
+  background: #444444;
+  background: #1686b0;
+  background: #d0d228; }
+
+.footer-single .icon-footer .iconFacebook:after {
+  content: "Comparte en Facebook";
+  margin-left: 20px; }
+
+.footer-single .icon-footer .iconTwitter:after {
+  content: "Comparte en Twitter";
+  margin-left: 20px; }
+
+.footer-single .icon-footer .iconPinterest:after {
+  content: "Comparte en Pinterest";
+  margin-left: 20px; }
+
+.footer-single .icon-footer .iconGoogle:after {
+  content: "Comparte en Google+";
+  margin-left: 20px; }
+
+.tag em:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  content: "\f02c";
+  margin-right: 10px; }

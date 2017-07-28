@@ -2,7 +2,7 @@
 	<head>
 		<title>Hola mundo Gulp</title>
 		<script src="javascript.js"></script>
-		<link rel="stylesheet" type="text/css" href="inicio.css">
+		<link rel="stylesheet" type="text/css" href="scss/main.min.css">
 	</head>
 	<body id="top" class=" body-logged" onload="cargarDatos()">
 		<header id="header" class="banner  headers-logged">
@@ -21,6 +21,16 @@
 				<ul id="nav">
 					<li class=""><a href="#">Inicio</a></li>
 					<li class=""><a href="#">Consultas</a></li>
+					<li>
+						<label>ServerJSON</label>
+						<ul>
+							<li class=""><div class="slideThree">
+							  <input type="checkbox" value="None" id="serverJson" name="check"  />
+							  <label for="serverJson"></label>
+							</div></li>
+							<li class=""><a href="./opciones%">Opciones</a></li>
+						</ul>
+					</li>
 					<li class=""><a href="./opciones.html">Opciones</a></li>
 				</ul>
 			</nav>
@@ -33,14 +43,38 @@
 		</header>
 		<a id="showHere"></a>
 <section class="container  container-logged" role="main">
-    <section class="content">
-        <article class="container__item">
+    <section class="content" >
+        <article id="container__item" class="container__item page-opciones">
         <header>
-           <h4><a href="#">Inicio</a></h4>
+           <h4><a href="#">Opciones</a></h4>
         </header>
-        <h1>Opciones</h1><a href="index.html">Volver</a>
+		<div style="background: rgb(255, 255,255); padding-bottom: 10px">
+            <h1 style="background: rgb(255,255,255);">Generales</h1>
+            <label>Contraseña</label><input type="text" id="txtAccessKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237);">
+
+
+        </div>
+		<h1 style="background: rgb(29, 202, 255);">Twitter</h1>
+
+        <div style="background: rgb(0, 132, 180); padding-bottom: 10px">
+			<label>Active</label>  <section title=".slideThree">
+								    <!-- .slideThree -->
+								    <div class="slideThree">
+								      <input type="checkbox" value="None" id="slideThree" name="check" checked />
+								      <label for="slideThree"></label>
+								    </div>
+								    <!-- end .slideThree -->
+								  </section>
+            <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">
+            <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">
+            <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">
+            <label>Consumer Secret</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">
+
+
+        </div>
+		<h1>Facebook(aun no implementado)</h1>
+
         <div>
-            <h1>Twitter</h1>
             <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)">
             <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)">
             <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)">
@@ -48,19 +82,20 @@
 
 
         </div>
-        <div>
-            <h1>Facebook</h1>
-            <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)">
-            <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)">
-            <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)">
-            <label>Consumer Secret</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)">
+		<h1 style="background: rgb(29, 118, 162)">MySQL</h1>
+
+		<div style="background: rgb(215, 215, 215); padding-bottom: 10px;">
+            <label>Host</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)" >
+            <label>User name</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)" >
+            <label>Password</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)" >
+            <label>Table name</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)" >
 
 
         </div>
-        <button id="btnGuardarOpciones">Guardar</button>
+
 
       </article>
-                    <!-- post navigation -->
+                <button id="btnGuardarOpciones">Guardar</button>    <!-- post navigation -->
     </section>
 </section>
 <footer id="pie">

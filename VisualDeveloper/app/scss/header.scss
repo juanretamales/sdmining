@@ -1,3 +1,5 @@
+//main: main.scss
+
 /* Header (Cabecera de pagina)
 ================================================== */
 #header
@@ -32,7 +34,6 @@
 	float: left;
 }
 
-@import "icon";
 
 #menu-principal > input, #search-form > input { display: none;}
 
@@ -44,14 +45,15 @@
 	text-align: center;
 	width: 100%;
 	//margin-top: 10px;
-	label
+	&>label
 	{
 		font-size: 12px;
 		display: none;
 	}
 	#nav
 	{
-		display: none;
+		display: grid;
+		grid-template-columns: 100%;
 		padding: 0px;
 		width: 100%;
 		float: left;
@@ -61,25 +63,31 @@
 			list-style:none;
 			margin: 0px;
 			width: 100%;
+			display: grid;
+			grid-template-columns: 100%;
 		}
 	}
 	ul
 	{
+		display: grid;
+		grid-template-columns: 100%;
 		margin: 0px;
 		li
 		{
-
-		}
-		a
-		{
-			color: black;
 			width: 100%;
-			text-decoration: none;
-			float: left;
-			padding: 10px 0px;
-			border: 1px solid black;
-			background: rgba(255, 255, 255, 0.5);
+
+			&>label, a
+			{
+				color: black;
+				width: 100%;
+				text-decoration: none;
+				float: left;
+				padding: 10px 0px;
+				border: 1px solid black;
+				background: rgba(255, 255, 255, 0.5);
+			}
 		}
+
 	}
 }
 
@@ -166,9 +174,28 @@
 				grid-template-columns: 25% 25% 25% 25%;
 
 				li{
+					a{
+						width: 100%;
+					}
+
+					ul{
+						display: none;
+						width: 25%;
+						//max-width: 200px;
+						padding: 0px;
+						display: none;
+						background: white;
+						position: absolute;
+						top: 40px;
+					}
 					&:hover
 					{
 						background: rgba(255,255,255,0.7);
+
+
+					}
+					&:hover ul{
+						display: block;
 					}
 				}
 			}

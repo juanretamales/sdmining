@@ -15,6 +15,7 @@ gulp.task('browser-sync', function() {
         proxy: "yourlocal.dev"
     });
 	gulp.watch("app/scss/*.scss", ['sass']);
+	gulp.watch("app/scss/parts/*.scss", ['sass']);
 	gulp.watch("app/js/*.js", ['sass']);
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
@@ -68,7 +69,7 @@ gulp.task('js-hard', function () {
 });
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['sass','js-watch'], function() {
+gulp.task('server', ['sass','js-watch'], function() {
 	// Serve files from the root of this project
     browserSync.init({
         server: "./app",
@@ -78,6 +79,19 @@ gulp.task('serve', ['sass','js-watch'], function() {
 	// add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.
 	gulp.watch("app/js/*.js", ['js']);
+    gulp.watch("app/*.html").on('change', browserSync.reload);
+});
+
+gulp.task('serve', function() {
+	// Serve files from the root of this project
+    browserSync.init({
+        server: "./app",
+		baseDir: "./"
+    });
+	gulp.watch("app/scss/*.scss").on('change', browserSync.reload);
+	// add browserSync.reload to the tasks array to make
+    // all browsers reload after tasks are complete.
+	gulp.watch("app/js/*.js").on('change', browserSync.reload);
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 
@@ -106,4 +120,4 @@ gulp.task('hard', ['sass','js-watch-hard'], function() {
     gulp.watch("app/*.html").on('change', browserSync.reload);
 });
 // Asigno la tarea serve como funcion de inicio por defecto
-gulp.task('default', ['css']);
+gulp.task('serve', ['css']);

@@ -20,13 +20,22 @@ function getOne(n)
 {
     //busca un elemento con el nombre n y el grupo twitter,
     var temp=collection.findOne({'name':n, 'group':'twitter'});
-    if(temp==undefined)//de no existir o ser undefined
+    if(temp===null)
     {
         //lo agrega a la tabla o coleccion
         insert(n,'default');
         global.sharedObj.settings= collection;
         return 'default';
     }
+    /*try {
+        if(temp==undefined)//de no existir o ser undefined
+        {
+
+        }
+    }
+    catch(err) {
+        console.log('Error:'+err);
+    }*/
     return temp.value;
 }
 //obtiene todos los datos del grupo twitter

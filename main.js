@@ -9,28 +9,31 @@ const path = require('path')
 const url = require('url')
 
 const loki = require('lokijs')
-var db = new loki('loki.json')
+//test in: http://www.obeliskos.com/LokiSandbox/
 var collection;
+var db = new loki(path.resolve(__dirname, '', 'sdmining.db'), {
+	autoload: true,
+	autoloadCallback : databaseInitialize,
+	autosave: true,
+	autosaveInterval: 4000
+});
 
-if(settings.has('settings'))
-{
-    collection=settings.get('settings');
+function databaseInitialize() {
+  collection = db.getCollection("settings");
+  if (collection === null) {
+    collection = db.addCollection("settings");
+  }
+
+  // kick off any program logic or start listening to external events
+  runProgramLogic();
 }
-else {
-    collection = db.addCollection('settings')
+function runProgramLogic() {
+  var entryCount = db.getCollection("settings").count();
+  console.log("number of entries in database : " + entryCount);
 }
+//comparto la informacion de sdmining.db al resto de archivos
 global.sharedObj = {settings: collection};
-/*
-//For get this collection use
-//////// and test in: http://www.obeliskos.com/LokiSandbox/
-const loki = require('lokijs')
-var db = new loki('loki.json')
-var collection=global.sharedObj.settings;
-if(collection==null)
-{
-    collection = db.addCollection('settings')
-}
-*/
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -92,6 +95,34 @@ const dialog = require('electron').dialog
 const fs = require('fs'); //file system
 
 var workspace="";//ruta del archivo a editar
+
+//funcion que enruta las respuesta a funciones del servidor
+ipc.on('funcion', function (event,arg) {
+	//para asignar las dependencias de esta funcion
+	var require;
+	//para asignar el valor si quiere algun retorno.
+	var temp;
+	//revisa si existe este valor a archivo a ocupar, por ejemplo './plugin/twitter.js' para require('./plugin/twitter.js');
+	if(arg.require !== undefined)
+	{
+		require=arg.require;
+	}
+	//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
+	if(typeof arg.nombre === 'function')
+	{
+		//ejecuta la funcion
+		temp = require[arg.nombre](arg.data);
+	}
+	if(arg.console == true)
+	{
+		console.log('recibirOpciones:');
+		console.log(temp);
+	}
+	if(arg.return == true)
+	{
+		event.returnValue = temp;
+	}
+})
 
 ipc.on('open-file-dialog', function (event) {
   dialog.showOpenDialog({
@@ -269,6 +300,7 @@ ipc.on('guardarOpciones', function (event,arg) {
         twitter.setAccessTokenSecret(arg['txtAccessTokenSecret']);
         console.log('txtAccessTokenSecret:'+twitter.getAccessTokenSecret());
     };
-    settings.set('settings',global.sharedObj.settings);
+
+    settings.set('settings',db.serialize());
 	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
 })

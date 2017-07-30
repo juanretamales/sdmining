@@ -1,5 +1,5 @@
 # -- Archivos comprimidos ------------------------------------------
-*.rar  
+*.rar
 *.zip
 *.7zip
 
@@ -9,7 +9,7 @@
 *.un~
 Session.vim
 .netrwhist
- 
+
 # eclipse
 *.pydevproject
 .project
@@ -28,19 +28,19 @@ local.properties
 .externalToolBuilders/
 *.launch
 .buildpath
- 
+
 # phpstorm
 .idea/
- 
+
 # textmate
 *.tmproj
 *.tmproject
 tmtags
- 
+
 # sublimetext
 /*.sublime-project
 *.sublime-workspace
- 
+
 # netbeans
 nbproject/private/
 build/
@@ -56,13 +56,13 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
- 
+
 # Linux
 .*
 !.gitignore
 !.htaccess
 *~
- 
+
 # Mac OS X
 .DS_Store
 .AppleDouble
@@ -73,4 +73,4 @@ Icon
 .Trashes
 
 # -- Electron --------------------------------------------
-node_modules
+node_modules/

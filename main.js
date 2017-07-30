@@ -106,13 +106,22 @@ ipc.on('funcion', function (event,arg) {
 	if(arg.require !== undefined)
 	{
 		require=arg.require;
+		//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
+		if(typeof require[arg.nombre] === 'function')
+		{
+			//ejecuta la funcion con el require anteriormente usado.
+			temp = require[arg.nombre](arg.data);
+		}
 	}
-	//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
-	if(typeof arg.nombre === 'function')
-	{
-		//ejecuta la funcion
-		temp = require[arg.nombre](arg.data);
+	else {
+		//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
+		if(typeof arg.nombre === 'function')
+		{
+			//ejecuta la funcion.
+			temp = windows[arg.nombre](arg.data);
+		}
 	}
+
 	if(arg.console == true)
 	{
 		console.log('recibirOpciones:');

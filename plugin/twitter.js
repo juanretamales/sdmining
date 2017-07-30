@@ -64,6 +64,7 @@ function insert(n,v)
     //asigno el dato a la variable global para que no se quede solo en este fichero
     global.sharedObj.settings= collection;
 }
+
 function getConsumerKey()
 {
     //console.log(global.sharedObj.settings);
@@ -209,6 +210,40 @@ function Stream()
       });
     });
 }
+
+/*Para interactuar*/
+function getMenu()
+{
+    return escape("<a onclick=\"getPage('Twitter')\">Twitter</a>");
+}
+function getOptions()
+{
+    return '<div style="background: rgb(0, 132, 180); padding-bottom: 10px">\
+        <label>Active</label>  <section title=".slideThree">\
+                                <!-- .slideThree -->\
+                                <div class="slideThree">\
+                                  <input type="checkbox" value="None" id="slideThree" name="check" checked />\
+                                  <label for="slideThree"></label>\
+                                </div>\
+                                <!-- end .slideThree -->\
+                              </section>\
+        <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
+        <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
+        <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
+        <label>Consumer Secret</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
+        </div>';
+}
+function getPage()
+{
+    return '';
+}
+
+function getSearch()
+{
+    return '';
+}
+
+
 /*Disponibles fuera del fichero*/
 exports.getConsumerKey = function(){return getConsumerKey() };
 exports.setConsumerKey =  function(q){setConsumerKey(q)};

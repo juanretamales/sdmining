@@ -4,7 +4,8 @@
   "description": "Un nuevo modo de crear documentos",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev-start": "electron-inspector"
   },
   "repository": "https://github.com/",
   "keywords": [
@@ -19,6 +20,7 @@
   "devDependencies": {
     "browserify": "~14.4.0",
     "electron-builder": "^19.6.3",
+    "electron-inspector": "^0.1.4",
     "gitlet": "~0.1.20",
     "handlebars": "~4.0.10",
     "shelljs": "~0.7.7"
@@ -26,11 +28,14 @@
   "dependencies": {
     "@google/maps": "^0.4.3",
     "electron": "^1.6.11",
+    "electron-inspector": "^0.1.4",
     "electron-settings": "^3.1.1",
     "facebook-sdk": "^0.3.2",
+    "fs": "^0.0.1-security",
     "http": "^0.0.0",
     "lokijs": "^1.5.0",
     "mysql": "^2.14.0",
+    "path": "^0.12.7",
     "twitter": "^1.7.1"
   }
 }

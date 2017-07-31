@@ -5,6 +5,16 @@ const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 const settings = require('electron-settings');
 
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and require them here.
+const ipc = require('electron').ipcMain
+const dialog = require('electron').dialog
+
+const fs = require('fs'); //file system
+
+var workspace="";//ruta del archivo a editar
+
+
 const path = require('path')
 const url = require('url')
 
@@ -87,44 +97,71 @@ app.on('activate', function () {
   }
 })
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
-const ipc = require('electron').ipcMain
-const dialog = require('electron').dialog
 
-const fs = require('fs'); //file system
 
-var workspace="";//ruta del archivo a editar
-
+//test: ipc.send('funcion',{require: 'twitter.js', nombre: 'getConsumerKey' , console: true});
 //funcion que enruta las respuesta a funciones del servidor
 ipc.on('funcion', function (event,arg) {
 	//para asignar las dependencias de esta funcion
-	var require;
+	var req={};
 	//para asignar el valor si quiere algun retorno.
 	var temp;
 	//revisa si existe este valor a archivo a ocupar, por ejemplo './plugin/twitter.js' para require('./plugin/twitter.js');
+	if(arg.console == true)
+	{
+		console.log('recibirOpciones:');
+	}
+	//revisa si existe esta funcion, por ejemplo require.getConsumerKey(, require debe ser seteado en arg.require anteriormente
 	if(arg.require !== undefined)
 	{
-		require=arg.require;
-		//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
-		if(typeof require[arg.nombre] === 'function')
+		if(arg.console == true)
 		{
-			//ejecuta la funcion con el require anteriormente usado.
-			temp = require[arg.nombre](arg.data);
+			console.log('./plugin/'+ arg.require);
+		}
+		req=require('./plugin/'+arg.require);
+		//intenta ejecutar la funcion
+		try {
+			//revisa si tiene parametros o no
+			if(arg.data==undefined || arg.data=='')
+			{
+				temp=req[arg.nombre]();
+			}
+			else {
+				//de tener parametros lo envia como objetos como una sola variable que debe ser tratada en el plugin
+				temp=req[arg.nombre](arg.data);
+			}
+		} catch (e) {
+			if(arg.console == true)
+			{
+				console.log('['+arg.nombre+'] no es funcion de '+arg.require);
+				//console.log('Error: '+e);
+			}
+		} finally {
+
 		}
 	}
 	else {
+		if(arg.console == true)
+		{
+			console.log('arg.require !== '+ arg.require);
+		}
 		//revisa si existe esta funcion, por ejemplo require.getConsumerKey(), require debe ser seteado en arg.require anteriormente
 		if(typeof arg.nombre === 'function')
 		{
 			//ejecuta la funcion.
 			temp = windows[arg.nombre](arg.data);
 		}
+		else {
+			if(arg.console == true)
+			{
+				console.log('['+arg.nombre+'] no es funcion');
+			}
+		}
 	}
 
 	if(arg.console == true)
 	{
-		console.log('recibirOpciones:');
+		//console.log('recibirOpciones:');
 		console.log(temp);
 	}
 	if(arg.return == true)

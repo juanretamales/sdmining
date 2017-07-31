@@ -245,6 +245,7 @@ function getSearch()
 
 
 /*Disponibles fuera del fichero*/
+
 exports.getConsumerKey = function(){return getConsumerKey() };
 exports.setConsumerKey =  function(q){setConsumerKey(q)};
 

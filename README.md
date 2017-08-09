@@ -1,42 +1,36 @@
-# PiscoEditor Guia Rapida
+# Mineria Social Guia Rapida
 
 **Clonalo, compilalo y ejecutalo para probarlo.**
 
 ## To Use
+Para clonar y ejecutar este repositorio tu necesitas [Git](https://git-scm.com) y [Node.js](https://nodejs.org/en/download/) (que incluye [npm](http://npmjs.com)) instalado en tu computador. Y de forma opcional puedes usar [Yarn](https://yarnpkg.com/en/docs/install) en vez de npm.
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
-Y de forma opcional puedes usar [Yarn](https://yarnpkg.com/en/docs/install).
+Entonces desde la linea de comando.
 
-### Con consola (git)
 
+### Con consola
+Clonar el repositorio
 ```bash
-# Clone this repository
-$ git clone https://github.com/juanretamales/PiscoEditor.git
-# Go into the repository
-$ cd PiscoEditor
-# Instalar dependencias con npm
-$ npm install
-# O instalar dependencias con Yarn
-$ yarn install
-# Run the app
-$ npm start
+# Clonar el repositorio
+$ git clone https://github.com/juanretamales/sdmining.git
 ```
-
-### Solo si usas NPM
-
+Ir al repositorio
+```bash
+# ir al repositorio
+$ cd sdmining
+```
+Instalar las dependencias
 ```bash
 # Instalar dependencias con npm
 $ npm install
-# Run the app
-$ npm start
-```
-
-### Solo si usas Yarn
-
-```bash
-# Instalar dependencias con Yarn
+# O con yarn
 $ yarn install
-# Run the app
+```
+Iniciar la aplicacion
+```bash
+# Iniciar con npm
+$ npm start
+# o con yarn
 $ yarn start
 ```
 
@@ -45,7 +39,7 @@ Note: If you're using Linux Bash for Windows, [see this guide](https://www.howto
 
 
 
-## License
+## Licencia
 
 [Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) ](LICENSE.md)
 

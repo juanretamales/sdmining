@@ -88,6 +88,23 @@ gulp.task('serve', function() {
         server: "./app",
 		baseDir: "./"
     });
+	
+	gulp.watch("app/scss/*.css").on('change', browserSync.reload);
+	gulp.watch("app/scss/*.scss").on('change', browserSync.reload);
+	// add browserSync.reload to the tasks array to make
+    // all browsers reload after tasks are complete.
+	gulp.watch("app/js/*.js").on('change', browserSync.reload);
+    gulp.watch("app/*.html").on('change', browserSync.reload);
+});
+
+gulp.task('default', function() {
+	// Serve files from the root of this project
+    browserSync.init({
+        server: "./app",
+		baseDir: "./"
+    });
+	
+	gulp.watch("app/scss/*.css").on('change', browserSync.reload);
 	gulp.watch("app/scss/*.scss").on('change', browserSync.reload);
 	// add browserSync.reload to the tasks array to make
     // all browsers reload after tasks are complete.

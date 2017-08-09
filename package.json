@@ -23,19 +23,33 @@
     "electron-inspector": "^0.1.4",
     "gitlet": "~0.1.20",
     "handlebars": "~4.0.10",
+    "nodemon": "^1.11.0",
     "shelljs": "~0.7.7"
   },
   "dependencies": {
     "@google/maps": "^0.4.3",
+    "body-parser": "^1.17.2",
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
     "electron": "^1.6.11",
     "electron-inspector": "^0.1.4",
     "electron-settings": "^3.1.1",
+    "express": "^4.15.4",
     "facebook-sdk": "^0.3.2",
     "fs": "^0.0.1-security",
+    "graphql": "^0.10.5",
+    "graphql-server-express": "^1.1.0",
+    "graphql-subscriptions": "^0.4.4",
+    "graphql-tools": "^1.1.0",
     "http": "^0.0.0",
     "lokijs": "^1.5.0",
+    "morgan": "^1.8.2",
     "mysql": "^2.14.0",
     "path": "^0.12.7",
-    "twitter": "^1.7.1"
+    "pg": "^7.1.0",
+    "sequelize": "^4.4.2",
+    "subscriptions-transport-ws": "^0.8.2",
+    "twitter": "^1.7.1",
+    "uuid": "^3.1.0"
   }
 }

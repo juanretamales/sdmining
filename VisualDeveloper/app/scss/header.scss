@@ -222,9 +222,8 @@
 			}
 		}
 	}
-	#menu-superior
+	/*#menu-superior
 	{
-		background: #4e5560;/* black */
 		width: 100%;
 		float: left;
 		color: white;
@@ -265,7 +264,6 @@
 	{
 		padding: 10px 0;
 	}
-	/*#header > h1 > a > em { height: 22px; margin: 0px; padding: 0px;}*/
 	#header > h1 > a > em { display: none;}
 	.icon-header
 	{
@@ -363,7 +361,7 @@
 	.search-form > input:focus
 	{
 		background: rgba(0,0,0,0.3);
-	}
+	}*/
 }
 @media (min-width:1200px)
 {

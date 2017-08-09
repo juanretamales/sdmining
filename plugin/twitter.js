@@ -138,6 +138,52 @@ function setAccessTokenSecret(q)
     //settings.set('twitterAccessTokenSecret',q);
     update('AccessTokenSecret',q);
 }
+
+
+/******************************/
+/*Objeto Twit                 */
+/******************************/
+function getTwit()
+{
+    return {created_at: '',
+        id:'',
+        id_str:'',
+        text:'',
+        truncated:'',
+        entities: getEntities(),
+        extended_entities: GetExtended_entities(),
+        source:'',
+        in_reply_to_status_id:'',
+        user: getUser(),
+        geo:'',
+        coordinates:'',
+        place:'',
+        contributors:'',
+        is_quote_status:'',
+        retweet_count:'',
+        favorite_count:'',
+        favorited:'',
+        retweeted:'',
+        possibly_sensitive:'',
+        lang:''};
+
+}
+function getEntities()
+{
+
+}
+function GetExtended_entities()
+{
+
+}
+function getUser()
+{
+
+}
+/******************************/
+/*Obtener Datos desde internet*/
+/******************************/
+
 /*Obtiene algun dato por parametro, es para uso general*/
 function getData(resource, params)
 {
@@ -211,7 +257,9 @@ function Stream()
     });
 }
 
-/*Para interactuar*/
+/************************************/
+/*Para interactuar con la app.Visual*/
+/************************************/
 function getMenu()
 {
     return escape("<a onclick=\"getPage('Twitter')\">Twitter</a>");

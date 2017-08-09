@@ -70,10 +70,13 @@
 	}
 	.page-opciones
 	{
-		
+
 		div{
-			display: grid;
-			grid-template-columns: 200px auto;
+			h1{margin: 0px;}
+			div{
+				display: grid;
+				grid-template-columns: 20% auto;
+			}
 		}
 
 	}
@@ -94,7 +97,7 @@
 		width: 100%;
 		float: left;
 		padding: 0px;
-		min-height: 1600px;
+		//min-height: 1600px;
 		text-align: center;
 	}
 }

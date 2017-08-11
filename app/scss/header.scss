@@ -1,3 +1,5 @@
+//main: main.scss
+
 /* Header (Cabecera de pagina)
 ================================================== */
 #header
@@ -10,6 +12,7 @@
 	color: white;
 	h1
 	{
+		display: none;
 		width: 100%;
 		text-align: center;
 
@@ -31,7 +34,6 @@
 	float: left;
 }
 
-@import "icon";
 
 #menu-principal > input, #search-form > input { display: none;}
 
@@ -43,14 +45,15 @@
 	text-align: center;
 	width: 100%;
 	//margin-top: 10px;
-	label
+	&>label
 	{
 		font-size: 12px;
 		display: none;
 	}
 	#nav
 	{
-		display: none;
+		display: grid;
+		grid-template-columns: 100%;
 		padding: 0px;
 		width: 100%;
 		float: left;
@@ -60,25 +63,31 @@
 			list-style:none;
 			margin: 0px;
 			width: 100%;
+			display: grid;
+			grid-template-columns: 100%;
 		}
 	}
 	ul
 	{
+		display: grid;
+		grid-template-columns: 100%;
 		margin: 0px;
 		li
 		{
-
-		}
-		a
-		{
-			color: black;
 			width: 100%;
-			text-decoration: none;
-			float: left;
-			padding: 10px 0px;
-			border: 1px solid black;
-			background: rgba(255, 255, 255, 0.5);
+
+			&>label, a
+			{
+				color: black;
+				width: 100%;
+				text-decoration: none;
+				float: left;
+				padding: 10px 0px;
+				border: 1px solid black;
+				background: rgba(255, 255, 255, 0.5);
+			}
 		}
+
 	}
 }
 
@@ -140,97 +149,81 @@
 }
 @media (min-width:400px)
 {
-	.icon-header em
-	{
-		padding: 10px 0;
-	}
-	#header > h1 > a > em
-	{
-		//background-size:  auto 100%;
-	}
+
 }
 @media (min-width:700px)
 {
-	.banner  > h1
-	{
-		float: left;
-		/*width: 50%;*/
-	}
-	.icon-header
-	{
-		margin-top: 20px;
-		width: 50%;
-		float: left;
-	}
-	#menu-principal
-	{
-		background: none;
-	}
-	#nav {
-		margin: 0px;
-		padding: 0px;
-		margin: 10px 2%;
-		width: 90%;
-	}
-	#nav li
-	{
-		float: left;
-		width: 24%;
-	}
-	#menu-principal  ul > li > a
-	{
-		color: black;
-		text-decoration: none;
-		float: left;
-		width: 100%;
-		border: 1px solid black;
-		margin: 0px;
-	}
-	.search-form > input
-	{
-		width: -moz-calc(100% - 40px);
-		width: calc(100% - 40px);
-		margin: 10px 0;
-		padding: 20px;
-		float: left;
-		/*removing boder from search box*/
-			border:none;
-		background: rgba(255,255,255,0.3);
+	#header{
+
+		h1{
+			a{
+				label{
+
+				}
+			}
+		}
+		.icon-header
+		{
+			display: none;
+		}
+		#menu-principal
+		{
+			#nav
+			{
+				display: grid;
+				grid-template-columns: 25% 25% 25% 25%;
+
+				li{
+					a{
+						width: 100%;
+					}
+
+					ul{
+						display: none;
+						width: 25%;
+						//max-width: 200px;
+						padding: 0px;
+						display: none;
+						background: white;
+						position: absolute;
+						top: 40px;
+					}
+					&:hover
+					{
+						background: rgba(255,255,255,0.7);
+
+
+					}
+					&:hover ul{
+						display: block;
+					}
+				}
+			}
+		}
 	}
 }
 @media (min-width:1000px)
 {
-	.banner
-	{
-		border-bottom: 1px solid;
-		/*position: fixed;*/
-		z-index: 99999;
-		top: 0;
-		left: 0;
-	}
-	.headers-logged
-	{
-		/*position: fixed;*/
-		top: 32px;
-	}
+
 	#header
 	{
 		width: 100%;
 		float: left;
+
+		h1
+		{
+			a{
+				float: left;
+				width: 100%;
+				background: white;
+			}
+			img{
+				float: left;
+			}
+		}
 	}
-	#header h1 a
+	/*#menu-superior
 	{
-		float: left;
-		width: 100%;
-		background: white;
-	}
-	#header > h1 img
-	{
-		float: left;
-	}
-	#menu-superior
-	{
-		background: #4e5560;/* black */
 		width: 100%;
 		float: left;
 		color: white;
@@ -271,7 +264,6 @@
 	{
 		padding: 10px 0;
 	}
-	/*#header > h1 > a > em { height: 22px; margin: 0px; padding: 0px;}*/
 	#header > h1 > a > em { display: none;}
 	.icon-header
 	{
@@ -369,7 +361,7 @@
 	.search-form > input:focus
 	{
 		background: rgba(0,0,0,0.3);
-	}
+	}*/
 }
 @media (min-width:1200px)
 {

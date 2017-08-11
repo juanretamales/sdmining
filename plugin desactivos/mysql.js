@@ -3,10 +3,10 @@ const mysql = require('mysql');
 const settings = require('electron-settings');
 
 var connection = mysql.createConnection({
-  host     : this.getHost(),
-  user     : this.getUser(),
-  password : this.getPassword(),
-  database : this.getDatabase()
+  host     : getHost(),
+  user     : getUser(),
+  password : getPassword(),
+  database : getDatabase()
 });
 
 function getHost()

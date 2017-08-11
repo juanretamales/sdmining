@@ -262,7 +262,17 @@ function Stream()
 /************************************/
 function getMenu()
 {
-    return escape("<a onclick=\"getPage('Twitter')\">Twitter</a>");
+    //return escape("<a onclick=\"getPage('Twitter')\">Twitter</a>");
+    x='';
+    x +='<label>ServerJSON</label>';
+    x +='<ul>';
+        x +='<li class=""><div class="slideThree">';
+          x +='<input type="checkbox" value="None" id="serverJson" name="check"  />';
+          x +='<label for="serverJson"></label>';
+        x +='</div></li>';
+        x +='<li class=""><a href="./opciones%">Opciones</a></li>';
+    x +='</ul>';
+    return x;
 }
 function getOptions()
 {
@@ -314,3 +324,4 @@ exports.getHashTag= function(q){return getHashTag(q)};
 
 /*Experimentals*/
 //exports.getParameters= function(){return JSON.stringify(parameters) };
+exports.getMenu= function(q){return getMenu()};

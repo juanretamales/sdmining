@@ -14,6 +14,7 @@ const fs = require('fs'); //file system
 
 var workspace="";//ruta del archivo a editar
 
+var menux='';//variable que guarda el menu cargado al inicio del programa
 
 const path = require('path')
 const url = require('url')
@@ -44,6 +45,28 @@ function runProgramLogic() {
 //comparto la informacion de sdmining.db al resto de archivos
 global.sharedObj = {settings: collection};
 
+menux +='<li class=""><a href="#">Inicio</a></li>';
+menux +='<li class=""><a href="#">Consultas</a></li>';
+menux +=getPluginsMenus();
+menux +='<li class=""><a href="./opciones.html">Opciones</a></li>';
+
+function getPluginsMenus()
+{
+	x='';
+	//plugin = './plugin/';
+	fs.readdirSync('./plugin/').forEach(file => {
+  		console.log(file);
+		req=require('./plugin/'+file);
+		try {
+			x += req.getMenu();
+		} catch (e) {
+			console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
+		}
+	})
+	return x;
+}
+//comparto la informacion de menu al resto de archivos
+global.sharedObj = {menu: menux};
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -348,5 +371,4 @@ ipc.on('guardarOpciones', function (event,arg) {
     };
 
     settings.set('settings',db.serialize());
-	//alert('Twitter:['+temp+']'); alert es del navegador, y estamos en consola
 })

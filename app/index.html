@@ -1,21 +1,10 @@
 <html>
 	<head>
 		<title>Hola mundo Gulp</title>
-		<script>
-
-		  require('./renderer.js'); // You can also require other files to run in this process
-
-
-		  //require('./js/quill.min.js'); //Load the visual editor Quill
-
-
-
-		  const ipc = require('electron').ipcRenderer;
-
-		const selectDirBtn = document.getElementById('select-directory');</script>
-		<link rel="stylesheet" type="text/css" href="inicio.css">
+		<script src="javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="scss/main.min.css">
 	</head>
-	<body id="top" class=" body-logged">
+	<body id="top" class=" body-logged" onload="cargarDatos()">
 		<header id="header" class="banner  headers-logged">
 			<h1>
 				<a href="#">
@@ -30,9 +19,6 @@
 			</div>
 			<nav id="menu-principal" class="menu-menu-container"><label for="menu-toggle">☰</label><input type="checkbox" id="menu-toggle"/>
 				<ul id="nav">
-					<li class=""><a href="#">Inicio</a></li>
-					<li class=""><a href="#">Consultas</a></li>
-					<li class=""><a href="./opciones.html">Opciones</a></li>
 				</ul>
 			</nav>
 			<div id="search-form">
@@ -44,20 +30,45 @@
 		</header>
 		<a id="showHere"></a>
 <section class="container  container-logged" role="main">
-    <section class="content">
-        <article class="container__item">
-        <header>
-           <h4><a href="#">Inicio</a></h4>
-        </header>
-        <p><p>Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
+    <section class="content" >
+        <h1></h1>
+		<section>
 
-
-      </article>
-                    <!-- post navigation -->
-            </section>
-      </section>
+		</section>
+    </section>
+</section>
 <footer id="pie">
-	<p>© 2017 Todos los derechos reservados.</p>
+	<label>© 2017 Todos los derechos reservados.</label>
+	<a href="http://www.juanretamales.cl">Version de Prueba</a>
 	<a href="http://www.juanretamales.cl">Diseñado por Juan Retamales.</a>
 </footer>
+</body>
+<script>
+require('./renderer.js'); // You can also require other files to run in this process
+const ipc = require('electron').ipcRenderer;
+var remote = require('electron').remote;
+
+function cargarDatos()
+{
+	loadMenu();
+	if(document.getElementById('txtAccessTokenKey')!=null)
+	{
+		document.getElementById('txtAccessTokenKey').value=recibirOpciones['txtAccessTokenKey'];
+	    document.getElementById('txtAccessTokenSecret').value=recibirOpciones['txtAccessTokenSecret'];
+	    document.getElementById('txtConsumerKey').value=recibirOpciones['txtConsumerKey'];
+	    document.getElementById('txtConsumerSecret').value=recibirOpciones['txtConsumerSecret'];
+		//console.log(ipc.send('recibirOpciones',''));
+		var recibirOpciones=ipc.sendSync('recibirOpciones', '');
+	}
+  	console.log('cargarDatos()');
+
+
+
+}
+function loadMenu()
+{
+	document.getElementById('nav').innerHTML=remote.getGlobal('sharedObj').menu;
+	console.log('Menu:'+remote.getGlobal('sharedObj').menu);
+}
+</script>
 </html>

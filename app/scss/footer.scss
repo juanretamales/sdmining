@@ -1,3 +1,4 @@
+// main: main.scss
 /* Footer (Pie de pagina)
 ================================================== */
 #pie
@@ -19,17 +20,21 @@
 
 @media (min-width:700px)
 {
+	#pie
+	{
+
+	}
 	#pie > p
 	{
-		float: left;
-		margin: 0px;
-		margin-left: 50px;
-		padding: 20px;
+		//float: left;
+		//margin: 0px;
+		//margin-left: 50px;
+		//padding: 20px;
 	}
 	#pie > a
 	{
-		float: right;
-		margin-right: 50px;
-		padding: 20px;
+		//float: right;
+		//margin-right: 50px;
+		//padding: 20px;
 	}
 }

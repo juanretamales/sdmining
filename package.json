@@ -45,10 +45,13 @@
     "lokijs": "^1.5.0",
     "morgan": "^1.8.2",
     "mysql": "^2.14.0",
+    "mysql2": "^1.4.0",
     "path": "^0.12.7",
     "pg": "^7.1.0",
     "sequelize": "^4.4.2",
+    "sqlite3": "^3.1.9",
     "subscriptions-transport-ws": "^0.8.2",
+    "tedious": "^2.0.0",
     "twitter": "^1.7.1",
     "uuid": "^3.1.0"
   }

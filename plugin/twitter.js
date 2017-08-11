@@ -270,7 +270,7 @@ function getMenu()
           x +='<input type="checkbox" value="None" id="serverJson" name="check"  />';
           x +='<label for="serverJson"></label>';
         x +='</div></li>';
-        x +='<li class=""><a href="./opciones%">Opciones</a></li>';
+        //x +='<li class=""><a href="./opciones%">Opciones</a></li>';
     x +='</ul>';
     return x;
 }

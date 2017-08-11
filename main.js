@@ -14,7 +14,6 @@ const fs = require('fs'); //file system
 
 var workspace="";//ruta del archivo a editar
 
-var menux='';//variable que guarda el menu cargado al inicio del programa
 
 const path = require('path')
 const url = require('url')
@@ -45,14 +44,10 @@ function runProgramLogic() {
 //comparto la informacion de sdmining.db al resto de archivos
 global.sharedObj = {settings: collection};
 
-menux +='<li class=""><a href="#">Inicio</a></li>';
-menux +='<li class=""><a href="#">Consultas</a></li>';
-menux +=getPluginsMenus();
-menux +='<li class=""><a href="./opciones.html">Opciones</a></li>';
-
-function getPluginsMenus()
+function getMenu()
 {
-	x='';
+	x = '';
+	//x ='<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>';
 	//plugin = './plugin/';
 	fs.readdirSync('./plugin/').forEach(file => {
   		console.log(file);
@@ -63,10 +58,12 @@ function getPluginsMenus()
 			console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
 		}
 	})
-	return x;
+	x +='<li class=""><a href="./opciones.html">Opciones</a></li>';
+	return '<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>'+x;
 }
 //comparto la informacion de menu al resto de archivos
-global.sharedObj = {menu: menux};
+global.sharedObj = {menu: getMenu()};
+console.log(getMenu());
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

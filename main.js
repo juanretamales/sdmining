@@ -50,12 +50,12 @@ function getMenu()
 	//x ='<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>';
 	//plugin = './plugin/';
 	fs.readdirSync('./plugin/').forEach(file => {
-  		console.log(file);
+  		//console.log(file);
 		req=require('./plugin/'+file);
 		try {
 			x += req.getMenu();
 		} catch (e) {
-			console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
+			//console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
 		}
 	})
 	x +='<li class=""><a href="./opciones.html">Opciones</a></li>';

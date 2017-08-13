@@ -20,7 +20,7 @@ var sequelize = new Sequelize(getDialect()+'://'+getUser()+':'+getPassword()+'@'
     	max: 5,
     	min: 0,
     	idle: 10000,
-	},
+	}
 }*/
 
 //busca un elemento con el nombre n y el grupo twitter, luego retorna su valor, de no existir o ser undefined lo agrega a la tabla o coleccion y retorna 'degault'

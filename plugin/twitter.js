@@ -298,7 +298,21 @@ function getPage()
 
 function getSearch()
 {
-    return '';
+    x=' <div style="background: rgb(0, 132, 180); padding-bottom: 10px">\
+            <label>Twitter Search</label>\
+            <div>\
+                <label>Tipo de busqueda</label> <select>\
+                    <option value="saab" selected>Por #Hashtag</option>\
+                  <option value="volvo">Por Usuario</option>\
+                  <option value="mercedes">Personalizada</option>\
+                </select> \
+            </div>\
+            <div>\
+                <label>Valor</label> <input type="text" name="lname">\
+            </div>\
+                ';
+    x +='</div>';
+    return x;
 }
 
 

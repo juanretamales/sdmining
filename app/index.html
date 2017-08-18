@@ -30,17 +30,12 @@
 		</header>
 		<a id="showHere"></a>
 <section class="container  container-logged" role="main">
-    <section class="content" >
-        <h1></h1>
-		<section>
-
-		</section>
+    <section id="content" class="content" >
     </section>
 </section>
 <footer id="pie">
 	<label>© 2017 Todos los derechos reservados.</label>
-	<a href="http://www.juanretamales.cl">Version de Prueba</a>
-	<a href="http://www.juanretamales.cl">Diseñado por Juan Retamales.</a>
+	<a href="http://www.juanretamales.cl">Version de Prueba - Diseñado por Juan Retamales.</a>
 </footer>
 </body>
 <script>
@@ -60,7 +55,10 @@ function cargarDatos()
 		//console.log(ipc.send('recibirOpciones',''));
 		var recibirOpciones=ipc.sendSync('recibirOpciones', '');
 	}
-  	console.log('cargarDatos()');
+		document.getElementById('content').innerHTML=remote.getGlobal('sharedObj').plugins.twitter.campo;
+
+
+	//console.log('cargarDatos()');
 
 
 
@@ -68,7 +66,7 @@ function cargarDatos()
 function loadMenu()
 {
 	document.getElementById('nav').innerHTML=remote.getGlobal('sharedObj').menu;
-	console.log('Menu:'+remote.getGlobal('sharedObj').menu);
+	//console.log('Menu:'+remote.getGlobal('sharedObj').menu);
 }
 </script>
 </html>

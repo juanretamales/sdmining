@@ -63,7 +63,50 @@ function getMenu()
 }
 //comparto la informacion de menu al resto de archivos
 global.sharedObj = {menu: getMenu()};
-console.log(getMenu());
+
+
+function getHome()
+{
+	x = '';
+	//x ='<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>';
+	//plugin = './plugin/';
+	fs.readdirSync('./plugin/').forEach(file => {
+  		//console.log(file);
+		req=require('./plugin/'+file);
+		try {
+			x += req.getStatus();
+		} catch (e) {
+			//console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
+		}
+	})
+	x +='<li class=""><a href="./opciones.html">Opciones</a></li>';
+	return '<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>'+x;
+}
+//comparto la informacion de menu al resto de archivos
+global.sharedObj = {home: getHome()};
+
+
+function getPlugins()
+{
+	var temp = new Object();
+	//x ='<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>';
+	//plugin = './plugin/';
+	fs.readdirSync('./plugin/').forEach(file => {
+  		//console.log(file);
+		req=require('./plugin/'+file);
+		try {
+			var name=file;
+			temp[name.replace(".js", "")]= req.getStatus();
+			//console.log(temp[file]);
+		} catch (e) {
+			//console.log('['+'./plugin/'+file+'] no tiene la funcion getMenu()');
+		}
+	})
+	return temp;
+}
+//comparto la informacion de menu al resto de archivos
+global.sharedObj = {plugins: getPlugins()};
+//console.log(getPlugins());
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

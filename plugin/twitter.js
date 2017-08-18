@@ -274,9 +274,9 @@ function getMenu()
     x +='</ul>';
     return x;
 }
-function getOptions()
+function getOptionsForm()
 {
-    return '<div style="background: rgb(0, 132, 180); padding-bottom: 10px">\
+    return '<div id="divTwitterOption" style="background: rgb(0, 132, 180); padding-bottom: 10px">\
         <label>Active</label>  <section title=".slideThree">\
                                 <!-- .slideThree -->\
                                 <div class="slideThree">\
@@ -285,7 +285,7 @@ function getOptions()
                                 </div>\
                                 <!-- end .slideThree -->\
                               </section>\
-        <label>Access Token Key</label><input type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
+        <label>Access Token Key</label><input value="" type="text" id="txtAccessTokenKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
         <label>Access Token Secret</label><input type="text" id="txtAccessTokenSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
         <label>Consumer Key</label><input type="text" id="txtConsumerKey" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
         <label>Consumer Secret</label><input type="text" id="txtConsumerSecret" onchange="guardarOpciones(this.id)" style="background: rgb(192, 222, 237)">\
@@ -295,24 +295,40 @@ function getPage()
 {
     return '';
 }
-
-function getSearch()
+function getTwitterSearch()
 {
-    x=' <div style="background: rgb(0, 132, 180); padding-bottom: 10px">\
-            <label>Twitter Search</label>\
-            <div>\
-                <label>Tipo de busqueda</label> <select>\
-                    <option value="saab" selected>Por #Hashtag</option>\
-                  <option value="volvo">Por Usuario</option>\
-                  <option value="mercedes">Personalizada</option>\
-                </select> \
-            </div>\
-            <div>\
-                <label>Valor</label> <input type="text" name="lname">\
-            </div>\
-                ';
-    x +='</div>';
-    return x;
+  x=' <div id="divTwitterSearch" style="background: rgb(0, 132, 180); padding-bottom: 10px">\
+          <label>Twitter Search</label>\
+          <div>\
+              <label>Tipo de busqueda</label> <select id="tquery">\
+                  <option value="thtag" selected>Por #Hashtag</option>\
+                <option value="tuser">Por Usuario</option>\
+                <option value="tcustom">Personalizada</option>\
+              </select> \
+          </div>\
+          <div>\
+              <label>Valor</label> <input type="text" name="lname">\
+          </div>\
+          <input type="button" value="Buscar">\
+              ';
+  x +='</div>';
+  return x;
+}
+function getStatus()
+{
+    return {
+      nombre:'twitter',
+      tipo:'r',
+      campo:getTwitterSearch(),
+      menu:getMenu(),
+      opciones:{
+          txtConsumerKey:getConsumerKey(),
+          txtConsumerSecret:getConsumerSecret(),
+          txtAccessTokenKey:getAccessTokenKey(),
+          txtAccessTokenSecret:getAccessTokenSecret()
+        },
+      optionForm:getOptionsForm()
+    };
 }
 
 
@@ -339,3 +355,5 @@ exports.getHashTag= function(q){return getHashTag(q)};
 /*Experimentals*/
 //exports.getParameters= function(){return JSON.stringify(parameters) };
 exports.getMenu= function(q){return getMenu()};
+
+exports.getStatus= function(q){return getStatus()};

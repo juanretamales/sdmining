@@ -45,7 +45,9 @@ var remote = require('electron').remote;
 
 function cargarDatos()
 {
-	loadMenu();
+	document.getElementById('nav').innerHTML=loadMenu();
+	document.getElementById('content').innerHTML=loadCampo();
+
 	if(document.getElementById('txtAccessTokenKey')!=null)
 	{
 		document.getElementById('txtAccessTokenKey').value=recibirOpciones['txtAccessTokenKey'];
@@ -63,10 +65,41 @@ function cargarDatos()
 
 
 }
+
+function loadCampo()
+{
+	x="";
+	//document.getElementById('nav').innerHTML=remote.getGlobal('sharedObj').menu;
+	//console.log('Menu:'+remote.getGlobal('sharedObj').menu);
+	temp=remote.getGlobal('sharedObj').plugins;
+	for (var i = 0, list = Object.keys(temp), len = list.length ; i < len; i++)
+	{
+		if((temp[list[i]]).campo != undefined)
+		{
+			x += (temp[list[i]]).campo;
+		}
+	}
+	//document.getElementById('content').innerHTML= x;
+	return x;
+
+}
 function loadMenu()
 {
-	document.getElementById('nav').innerHTML=remote.getGlobal('sharedObj').menu;
+	x="";
+	//document.getElementById('nav').innerHTML=remote.getGlobal('sharedObj').menu;
 	//console.log('Menu:'+remote.getGlobal('sharedObj').menu);
+	temp=remote.getGlobal('sharedObj').plugins;
+	for (var i = 0, list = Object.keys(temp), len = list.length ; i < len; i++)
+	{
+		if((temp[list[i]]).menu != undefined)
+		{
+			x += (temp[list[i]]).menu;
+		}
+	}
+	x +='<li class=""><a href="./opciones.html">Opciones</a></li>';
+	//document.getElementById('nav').innerHTML= '<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>'+x;
+	return '<li><a href="#">Inicio</a></li><li><a href="#">Consultas</a></li>'+x;
+
 }
 </script>
 </html>
